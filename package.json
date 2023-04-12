@@ -5,6 +5,7 @@
   "license": "MIT",
   "scripts": {
     "dev": "nodemon --exec babel-node src",
+    "seed": "babel-node scripts/seed.js",
     "start": "babel-node src",
     "build": "babel-node src"
   },
@@ -14,7 +15,8 @@
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
     "jsonwebtoken": "^9.0.0",
-    "mongoose": "^7.0.3"
+    "mongoose": "^7.0.3",
+    "multer": "^1.4.5-lts.1"
   },
   "devDependencies": {
     "@babel/core": "^7.21.3",

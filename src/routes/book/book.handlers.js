@@ -18,13 +18,14 @@ export const getBooks = async (req, res) => {
 
 export const addBook = async (req, res) => {
     try {
-        const { title, thumbnail, author, url } = req.body;
+        const { title, thumbnail, author, url, genre } = req.body;
 
         const newBookObj = await bookModel.create({
             title,
             thumbnail,
             author,
             url,
+            genre,
             uploadedBy: req.decoded._id,
         });
 
@@ -43,6 +44,16 @@ export const getBookById = async (req, res) => {
         sendSuccessResponse(res, bookObj);
     } catch (err) {
         sendErrorResponse(res, err.message);
+    }
+};
+
+export const uploadBook = (req, res) => {
+    try {
+        console.log({ files: req.file });
+
+        sendSuccessResponse(res, { url: req.file.path });
+    } catch (err) {
+        sendErrorResponse(res, err);
     }
 };
 

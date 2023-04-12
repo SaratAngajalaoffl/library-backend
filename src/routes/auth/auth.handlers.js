@@ -29,6 +29,7 @@ export const login = async (req, res) => {
         sendErrorResponse(res, err.message);
     }
 };
+
 export const register = async (req, res) => {
     try {
         const { email, password, fullName } = req.body;
@@ -47,6 +48,18 @@ export const register = async (req, res) => {
         });
 
         sendSuccessResponse(res, { user: newUserObj.toObject(), accessToken });
+    } catch (err) {
+        sendErrorResponse(res, err.message);
+    }
+};
+
+export const getAuth = async (req, res) => {
+    try {
+        const { _id } = req.decoded;
+
+        const userObj = await userModel.findById(_id);
+
+        sendSuccessResponse(res, userObj.toObject());
     } catch (err) {
         sendErrorResponse(res, err.message);
     }

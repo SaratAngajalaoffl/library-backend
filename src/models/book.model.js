@@ -18,6 +18,20 @@ const bookSchema = new mongoose.Schema({
     url: {
         type: String,
     },
+    genre: {
+        type: String,
+        enum: [
+            "Fiction",
+            "Non-fiction",
+            "Romance",
+            "Mystery",
+            "Thriller",
+            "Horror",
+            "Science Fiction",
+            "Fantasy",
+            "Historical Fiction",
+        ],
+    },
 });
 
 export const bookModel = mongoose.model("Book", bookSchema);
